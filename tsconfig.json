@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "target": "es6",
+    "lib": [
+      "es5",
+      "es6"
+    ],
+    "types": [
+      "jest",
+      "node"
+    ],
+    "outDir": "./dist",
+    "resolveJsonModule": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "checkJs": true
+  }
+}

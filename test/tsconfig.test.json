@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "target": "es6",
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ],
+    "types": [
+      "jest",
+      "node"
+    ],
+    "resolveJsonModule": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "checkJs": true
+  },
+  "files": [
+    "setup.js",
+    "teardown.js",
+    "types/my-mongodb-memory-server.d.ts"
+  ],
+  "include": [
+    "**/*.test.ts"
+  ]
+}

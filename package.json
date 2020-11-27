@@ -1,0 +1,81 @@
+{
+  "name": "trinity",
+  "version": "1.0.0",
+  "description": "P2P server",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p ./src/tsconfig.src.json --sourceMap false",
+    "build-debug": "tsc -p ./src/tsconfig.src.json",
+    "clean": "rm -rf dist/*",
+    "format": "clang-format -i ./src/**/*.ts && clang-format -i ./test/**/*.ts",
+    "lint": "tslint -c tslint.json -p ./src/tsconfig.src.json && tslint -c tslint.json -p ./test/tsconfig.test.json",
+    "prebuild": "npm run clean",
+    "prebuild-debug": "npm run clean",
+    "prewatch": "npm run clean && touch dist/index.js",
+    "serve:dev": "DEBUG=APP* node dist/index.js",
+    "serve:dev2": "MONGODB_URL=mongodb://localhost:27017/dev_trinity_2 WEBSOCKET_PORT=8334 HTTP_PORT=3001 P2P_PEERS=ws://localhost:8333 DEBUG=APP* DEBUG_COLORS=true DEBUG_HIDE_DATE=true node dist/index.js",
+    "serve:dev:cluster": "DEBUG=APP* node dist/cluster.js",
+    "serve:prod": "DEBUG=APP*:error node dist/index.js",
+    "start": "npm run serve:prod",
+    "test": "DEBUG=APP* jest",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "watch-node": "DEBUG=APP* DEBUG_COLORS=true DEBUG_HIDE_DATE=true nodemon --delay 1000ms dist/index.js",
+    "watch-test": "DEBUG=APP* jest --watch",
+    "watch-ts": "tsc -p ./src/tsconfig.src.json -w --preserveWatchOutput true --sourceMap false"
+  },
+  "author": "Satoshi May <satoshi.may@gmail.com>",
+  "license": "ISC",
+  "jest": {
+    "globalSetup": "./test/setup.js",
+    "globalTeardown": "./test/teardown.js",
+    "testEnvironment": "node",
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "./test/tsconfig.test.json"
+      }
+    },
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "debug": "^3.2.5",
+    "express": "^4.16.3",
+    "joi": "^13.6.0",
+    "mongodb": "^3.1.6",
+    "supports-color": "^5.5.0",
+    "uuid": "^3.3.2",
+    "ws": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/debug": "0.0.30",
+    "@types/express": "^4.16.0",
+    "@types/jest": "^23.3.2",
+    "@types/joi": "^13.6.0",
+    "@types/mongodb": "^3.1.9",
+    "@types/node": "^10.11.2",
+    "@types/supertest": "^2.0.6",
+    "@types/uuid": "^3.4.4",
+    "@types/ws": "^5.1.2",
+    "clang-format": "^1.2.4",
+    "concurrently": "^3.6.1",
+    "jest": "^23.6.0",
+    "mongodb-memory-server": "^2.3.0",
+    "nodemon": "^1.18.4",
+    "supertest": "^3.3.0",
+    "ts-jest": "^23.10.2",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.1"
+  }
+}
