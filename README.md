@@ -9,7 +9,7 @@ Run mongod on localhost:27017.
 
 ## Installation
 ```
-git clone --depth=1 https://github.com/SatoshiMay/cryptocurrency.git
+git clone --depth=1 https://github.com/SatoshiMay/cryptocurrency-clamped.git
 npm install
 ```
 
